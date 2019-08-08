@@ -1,0 +1,33 @@
+<div class="dialog-container">
+    <h1 mat-dialog-title>Create New Employee</h1>
+    <form class="dialog-container" [formGroup]="empFormGroup">
+      <mat-form-field>
+        <input formControlName="firstName" matInput placeholder="First Name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="lastName" matInput placeholder="Last Name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option [value]="'CEO'">CEO</mat-option>
+          <mat-option [value]="'VP'">VP</mat-option>
+          <mat-option [value]="'MANAGER'">Manager</mat-option>
+          <mat-option [value]="'LACKEY'">Lackey</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+
+  </div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onSaveClick()" cdkFocusInitial [disabled]="!empFormGroup.valid">Save</button>
+</div>
